@@ -79,7 +79,7 @@ alpha = 0.001
 trainer = Trainer(network, cce_loss, AdamOptimizer(learning_rate, alpha))
 
 # train network
-epochs = 20
+epochs = 10
 batch_size = 1000
 
 print("Starting Training with batch size " + str(batch_size) + " and " + str(epochs) + " epochs ...")

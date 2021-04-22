@@ -1,6 +1,6 @@
 # Machine Learning Framework Package
 
-This repository contains the Machine Learning Framework Package. It comprises different layer types, like the standard fully connected layer, activation layers (relu, sigmoid and tanh) and the dropout layer, as well as multiple optimizers, like Adam, Adagrad, Stochastic Gradient Descent, Momentum based Gradient Descent and Nesterov's accelerated Gradient Descent. All paths are relative to the project directory.
+This repository contains the Machine Learning Framework Package. It comprises different layer types, like the standard fully connected layer, activation layers (relu, sigmoid and tanh) and the dropout layer, as well as multiple optimizers, like Adam, Adagrad, Stochastic Gradient Descent, Momentum based Gradient Descent and Nesterov's accelerated Gradient Descent. All paths mentioned in this document are relative to the project directory.
 
 ## How to deploy our code
 1. clone directory via https with
@@ -41,7 +41,7 @@ The corresponding source files are stored in */_framework/layers/*. Note that so
 
 ### Initialization
 
-The `class Trainer` (*/_framework/trainer.py*) provides the functionality to train a network. Therefor, the trainer has to be given a network, a losss function and an optimizer. An initialization could look like the following:
+The `class Trainer` (*/_framework/trainer.py*) provides the functionality to train a network. Therefor, the trainer has to be given a network, a loss function and an optimizer. An initialization could look like the following:
 
 `trainer = Trainer(network, cce_loss, AdamOptimizer(learning_rate, alpha))`
 
@@ -83,4 +83,12 @@ loss, validation_loss = trainer.train(x_train, t_train, epochs, batch_size, live
 This file contains multiple functions and classes that are used to connect the framework to a web based frontend. This comprises classes to plot the learning curve, the confusion matrix and input features.
 
 ## Example
-TODO
+An example of how to use our code is provided in *MNIST_example.py*. In this script, firstly a class is defined that helps to load the MNIST data and preprocess it, so that it can be directly fed into neural nets.
+Below, a demonstration of the functions of this framework can be found.
+
+A neural net is created with 784 x 100 x 50 x 10 Neurons. The activation function is *tanh*.
+Then, a trainer is created with an `AdamOptimizer` and categorical cross entropy as loss function. The regularization parameter `alpha` and the learning rate are set manually, while the default values are used for the other hyperparameters.
+
+Afterwards, the training is perfomed on the test dataset with a batch size of 1000 over 10 epochs. The validation datasets are taken for live evaluation.
+
+When the training is finished, the network ist testet on the validation dataset. The resulting accuracy and confidence are printed to the console. The learning curve is visualized using *matplotlib*. Further evaluations could be performed using the `confusion_matrix`.

@@ -11,12 +11,12 @@ class MnistLoader:
 
     def __init__(self, scaling, t_clipping):
         self.x_train, self.t_train = loadlocal_mnist(
-            images_path=self.cwd + '/data/mnist/train-images.idx3-ubyte',
-            labels_path=self.cwd + '/data/mnist/train-labels.idx1-ubyte')
+            images_path=self.cwd + '/mnist/train-images.idx3-ubyte',
+            labels_path=self.cwd + '/mnist/train-labels.idx1-ubyte')
 
         self.x_test, self.t_test = loadlocal_mnist(
-            images_path=self.cwd + '/data/mnist/t10k-images.idx3-ubyte',
-            labels_path=self.cwd + '/data/mnist/t10k-labels.idx1-ubyte')
+            images_path=self.cwd + '/mnist/t10k-images.idx3-ubyte',
+            labels_path=self.cwd + '/mnist/t10k-labels.idx1-ubyte')
 
         self.scaling = scaling
         self.t_clipping = t_clipping

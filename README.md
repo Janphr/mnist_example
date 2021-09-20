@@ -1,3 +1,5 @@
+This repository is an example of how to wrap the submodule _framework in a minimal project. Following the content of the README.md of the submodule:
+
 # Machine Learning Framework Package
 
 This repository contains the Machine Learning Framework Package. It comprises different layer types, like the standard fully connected layer, activation layers (relu, sigmoid and tanh) and the dropout layer, as well as multiple optimizers, like Adam, Adagrad, Stochastic Gradient Descent, Momentum based Gradient Descent and Nesterov's accelerated Gradient Descent. All paths mentioned in this document are relative to the project directory.

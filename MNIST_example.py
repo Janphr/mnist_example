@@ -4,6 +4,7 @@ import os
 import numpy as np
 from _framework import *
 
+
 ##################################################################################################
 # This class's purpose only is to load the mnist dataset and prepare the data for the training
 class MnistLoader:
@@ -47,11 +48,12 @@ class MnistLoader:
 
         return np.asfarray(self.x_test) * self.scaling + 0.01, targets_one_hot
 
+
 ##################################################################################################
 # The following shows, how to use our Framework
 
 # Configure MNIST Loader, so that values are scaled to 0-1 and clipped to 0.01 and 0.99
-l = MnistLoader(scaling = 0.99 / 255, t_clipping = True)
+l = MnistLoader(scaling=0.99 / 255, t_clipping=True)
 
 # extract train and test data (-> already scaled)
 x_train, t_train = l.get_train_data()
@@ -60,15 +62,15 @@ x_test, t_test = l.get_test_data()
 # create and configure the ANN
 layer_arr = []
 
-layer_arr.append(FullyConnected(x_test.shape[1],100)) # hidden layer -> size 100
-layer_arr.append(Tanh()) # Activation function has to be added as layer
+layer_arr.append(FullyConnected(x_test.shape[1], 100))  # hidden layer -> size 100
+layer_arr.append(Tanh())  # Activation function has to be added as layer
 # layer_arr.append(Dropout(100, 0.7)) # optionally Dropout can be added by a corresponding layer
 
-layer_arr.append(FullyConnected(100,50)) # hidden layer -> size 50
-layer_arr.append(Tanh()) # corresponding activation function 
+layer_arr.append(FullyConnected(100, 50))  # hidden layer -> size 50
+layer_arr.append(Tanh())  # corresponding activation function
 
-layer_arr.append(FullyConnected(50,t_test.shape[1])) # output layer -> size depending on targets
-layer_arr.append(Tanh()) # corresponding activation function 
+layer_arr.append(FullyConnected(50, t_test.shape[1]))  # output layer -> size depending on targets
+layer_arr.append(Tanh())  # corresponding activation function
 
 # create network
 network = Network(*layer_arr)
@@ -86,13 +88,11 @@ print("Starting Training with batch size " + str(batch_size) + " and " + str(epo
 loss, validation_loss = trainer.train(x_train, t_train, epochs, batch_size, live_eval=(x_test, t_test))
 print("Training done!")
 
-
 # test network
 # note that test and train always apply softmax 
 avg_tps, avg_confidence, correct_wrong_predictions, confusion_matrix = network.test(x_test, t_test)
 
-
-#print results
+# print results
 print("Test done!")
 print("Accuracy: " + str(avg_tps))
 print("Confidence: " + str(avg_confidence))
@@ -101,20 +101,20 @@ print("Confidence: " + str(avg_confidence))
 
 # configure matplotlib
 matplotlib.use("TkAgg")
-params = {"ytick.color" : "k",
-          "xtick.color" : "k",
-          "axes.labelcolor" : "k",
-          "axes.edgecolor" : "k",
-          "text.color" : 'k'}
+params = {"ytick.color": "k",
+          "xtick.color": "k",
+          "axes.labelcolor": "k",
+          "axes.edgecolor": "k",
+          "text.color": 'k'}
 plt.rcParams.update(params)
 
 # plot learning curve
-plt.plot(loss, label = "loss")
-plt.plot(validation_loss, label = "validation loss")
+plt.plot(loss, label="loss")
+plt.plot(validation_loss, label="validation loss")
 plt.xlabel('Epoch')
 plt.ylabel('Loss')
 plt.title('Learning Curve')
 plt.legend()
-#ax = plt.gca()
-#ax.set_facecolor('xkcd:salmon')
+# ax = plt.gca()
+# ax.set_facecolor('xkcd:salmon')
 plt.show()

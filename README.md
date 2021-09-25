@@ -8,14 +8,16 @@ This repository contains the Machine Learning Framework Package. It comprises di
 1. clone directory via https with
 `git clone https://gitlab2.informatik.uni-wuerzburg.de/hci/teaching/lectures/machine-learning/student-material/ws20/Team-08/framework.git` 
 
+2. Init submodule with `git submodule update --init --recursive`.
 
-2. execute `git submodule update --remote --merge` to fetch the latest changes from upstream submodule _framework, merge them in, and check out the latest revision of the submodule.
 
-3. Install python
+3. execute `git submodule update --remote --merge` to fetch the latest changes from upstream submodule _framework, merge them in, and check out the latest revision of the submodule.
 
-4. Create an virtual environment of your choice. We use pipenv. Tutorials can be found in the web.
+4. Install python
 
-5. Install the required packages with `pip install -r requirements.txt`
+5. Create an virtual environment of your choice. We use pipenv. Tutorials can be found in the web.
+
+6. Install the required packages with `pip install -r requirements.txt`
 
 ## Creating a Network
 
